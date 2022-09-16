@@ -17,7 +17,7 @@ class CarnivorousPlant:
 class Nepenthes(CarnivorousPlant):
 
     def __init__(self, b, col):
-        self.name = "Rajah"
+        self.name = "N. Rajah"
         super().__init__(b, col)
 
     def getName(self):
