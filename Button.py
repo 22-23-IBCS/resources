@@ -24,3 +24,15 @@ class Button(Rectangle):
                     if y < self.maxY:
                         return True
         return False
+
+class QuitButton(Button):
+
+    def __init__(self, win, p1, p2, color = "red", text = "Quit"):
+        super().__init__(win, p1, p2, color, text)
+
+
+
+
+
+
+    
