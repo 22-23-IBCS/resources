@@ -1,4 +1,5 @@
 import random
+import math
 
 def CentralTendencies(x, y, z):
     #mean
@@ -103,6 +104,13 @@ def main():
     print(Khang())
 
     print(CentralTendencies(3, 5, 5))
+
+    #math library trig use
+
+    print(math.sin(math.pi/2))
+    print(math.cos(0))
+
+    print(math.asin(1))
 
     
     
