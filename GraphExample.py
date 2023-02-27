@@ -3,16 +3,21 @@ import random
 import time
 
 class Node:
-    def __init__(self, x, y, win):
+    def __init__(self, x, y, win, name):
         self.center = Point(x, y)
         self.C = Circle(self.center, 30)
         self.neighbors = []
+        self.name = name
+        self.T = Text(self.center, self.name)
+        
 
     def draw(self, win):
         self.C.draw(win)
+        self.T.draw(win)
 
     def undraw(self):
         self.C.undraw()
+        self.T.undraw()
 
     def addNeighbor(self, n):
         self.neighbors.append(n)
@@ -26,6 +31,12 @@ class Node:
     def color(self, c):
         self.C.setFill(c)
 
+    def getDegree(self):
+        return len(self.neighbors)
+
+    def getName(self):
+        return self.name
+
 class Graph:
 
     def __init__(self, n, e, win):
@@ -33,6 +44,7 @@ class Graph:
         self.E = []
         Xpositions = []
         Ypositions = []
+        names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
         numN = 0
         while True:
             x = random.randint(140, 740)
@@ -46,7 +58,8 @@ class Graph:
             if foundNode:
                 Xpositions.append(x)
                 Ypositions.append(y)
-                N = Node(x, y, win)
+                name = names[numN]
+                N = Node(x, y, win, name)
                 self.nodes.append(N)
                 numN += 1
 
@@ -77,6 +90,10 @@ class Graph:
             e.undraw()
         for n in self.nodes:
             n.undraw()
+
+    def getAllDegrees(self):
+        for n in self.nodes:
+            print(str(n.getDegree()) + " : " + n.getName())
         
         
 def main():
@@ -91,7 +108,9 @@ def main():
             break
         if Gen.isClicked(m):
             G.delete()
-            G = Graph(7, 10, win)
+            #Create a graph with (num Nodes, num Edges)
+            G = Graph(6, 5, win)
+            G.getAllDegrees()
     win.close()
 
 if __name__ == "__main__":
